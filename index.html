@@ -1,0 +1,903 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Intelligence Recruitment System — Review</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css?v=3.0-optimized-3" />
+  </head>
+  <body>
+    <div class="auth-gate" id="auth-gate">
+      <section class="auth-card" aria-labelledby="auth-title">
+        <div class="auth-mark">IR</div>
+        <h1 id="auth-title">Đăng nhập hệ thống</h1>
+        <p>Truy cập không gian vận hành tuyển dụng của bạn.</p>
+        <form id="login-form">
+          <label class="field"
+            >Tài khoản<input
+              id="login-user"
+              autocomplete="username"
+              required /></label
+          ><label class="field"
+            >Mật khẩu<input
+              id="login-password"
+              type="password"
+              autocomplete="current-password"
+              required
+          /></label>
+          <p class="auth-error" id="login-error" role="alert"></p>
+          <button class="btn primary" type="submit">Đăng nhập</button>
+        </form>
+      </section>
+    </div>
+
+    <div class="app">
+      <aside class="sidebar">
+        <div class="sidebar-head">
+          <div class="brand">
+            <span class="mark">IR</span>
+            <div>
+              <strong>Intelligence Recruitment</strong
+              ><small>Enterprise workspace</small>
+            </div>
+          </div>
+          <button
+            class="sidebar-toggle"
+            id="sidebar-toggle"
+            type="button"
+            aria-label="Collapse page navigator"
+            aria-expanded="true"
+          >
+            ‹
+          </button>
+        </div>
+        <nav class="nav" id="nav" aria-label="Page navigator">
+          <span class="group">Monitor</span
+          ><button data-view="overview" title="Overview">
+            <span class="nav-icon" aria-hidden="true">▦</span
+            ><span class="nav-label">Overview</span></button
+          ><button
+            data-view="operations"
+            class="active"
+            title="Recruitment operations"
+          >
+            <span class="nav-icon" aria-hidden="true">◎</span
+            ><span class="nav-label">Recruitment operations</span></button
+          ><button data-view="candidates" title="Candidate journey">
+            <span class="nav-icon" aria-hidden="true">◉</span
+            ><span class="nav-label">Candidate journey</span></button
+          ><button data-view="performance" title="Performance and KPI">
+            <span class="nav-icon" aria-hidden="true">↗</span
+            ><span class="nav-label">Performance &amp; KPI</span></button
+          ><span class="group">Analyze</span
+          ><button data-view="sources" title="Source and channel">
+            <span class="nav-icon" aria-hidden="true">⌁</span
+            ><span class="nav-label">Source &amp; channel</span></button
+          ><button data-view="forecast" title="Demand forecast">
+            <span class="nav-icon" aria-hidden="true">⌁</span
+            ><span class="nav-label">Demand forecast</span></button
+          ><span class="group">Govern</span
+          ><button data-view="reports" title="Reports and refresh">
+            <span class="nav-icon" aria-hidden="true">▤</span
+            ><span class="nav-label">Reports &amp; refresh</span></button
+          ><button data-view="admin" data-admin="true" title="Access and audit">
+            <span class="nav-icon" aria-hidden="true">◇</span
+            ><span class="nav-label">Access &amp; audit</span>
+          </button>
+        </nav>
+        <div class="identity">
+          <label
+            >Preview role<select id="role">
+              <option>Recruitment Manager</option>
+              <option>Supervisor</option>
+              <option>Team Leader</option>
+              <option>Recruiter</option>
+            </select></label
+          >
+        </div>
+      </aside>
+      <main class="main">
+        <header class="top ops-sticky">
+          <div class="ops-page-identity">
+            <div class="ops-page-block">
+              <h1 id="page-title">Vận hành tuyển dụng</h1>
+              <p id="page-copy">
+                Quản lý Request và bảo đảm tiến độ thực hiện.
+              </p>
+            </div>
+            <div class="ops-section-block">
+              <h2 id="ops-section-title">Tổng hợp vận hành</h2>
+              <p id="ops-section-copy">
+                KPI chu kỳ và tín hiệu vận hành quan trọng.
+              </p>
+            </div>
+          </div>
+          <div class="actions">
+            <div class="refresh-control">
+              <button class="btn" id="refresh">Refresh</button
+              ><span class="badge"
+                ><i class="dot"></i
+                ><span id="refresh-label"
+                  >Dữ liệu cập nhật lúc 08:30</span
+                ></span
+              >
+            </div>
+          </div>
+        </header>
+
+        <section class="view" id="view-overview">
+          <details class="filters">
+            <summary>Filters: MTD · All regions · All projects</summary>
+            <div class="tools">
+              <label class="field"
+                >Period<select>
+                  <option>Month to date</option>
+                  <option>Quarter to date</option>
+                  <option>Year to date</option>
+                  <option>Weekly</option>
+                </select></label
+              ><label class="field"
+                >Region<select>
+                  <option>All regions</option>
+                  <option>North</option>
+                  <option>Central</option>
+                  <option>South</option>
+                </select></label
+              ><label class="field"
+                >Project<select>
+                  <option>All projects</option>
+                  <option>Retail expansion</option>
+                  <option>Warehouse network</option>
+                  <option>Customer service</option>
+                </select></label
+              >
+            </div>
+          </details>
+          <div class="grid">
+            <article class="card kpi">
+              <label>Recruitment requests</label><strong>1,248</strong
+              ><small>+12.5% vs previous month</small>
+            </article>
+            <article class="card kpi">
+              <label>KPI achievement</label><strong>78.4%</strong
+              ><small>+4.2 percentage points</small>
+            </article>
+            <article class="card kpi">
+              <label>Average time to fill</label><strong>18.4d</strong
+              ><small>2.1 days faster than target</small>
+            </article>
+            <article class="card kpi">
+              <label>Approved recruitment cost</label><strong>$128K</strong
+              ><small class="down">+6.8% vs budget</small>
+            </article>
+          </div>
+          <div class="split">
+            <article class="card">
+              <div class="section-head">
+                <h2>Hiring demand vs filled</h2>
+                <span>Requests / Filled</span>
+              </div>
+              <div class="bars">
+                <div class="bar-set">
+                  <i class="bar" style="height: 52%"></i
+                  ><i class="bar alt" style="height: 36%"></i><label>Feb</label>
+                </div>
+                <div class="bar-set">
+                  <i class="bar" style="height: 61%"></i
+                  ><i class="bar alt" style="height: 44%"></i><label>Mar</label>
+                </div>
+                <div class="bar-set">
+                  <i class="bar" style="height: 68%"></i
+                  ><i class="bar alt" style="height: 49%"></i><label>Apr</label>
+                </div>
+                <div class="bar-set">
+                  <i class="bar" style="height: 74%"></i
+                  ><i class="bar alt" style="height: 56%"></i><label>May</label>
+                </div>
+                <div class="bar-set">
+                  <i class="bar" style="height: 83%"></i
+                  ><i class="bar alt" style="height: 62%"></i><label>Jun</label>
+                </div>
+                <div class="bar-set">
+                  <i class="bar" style="height: 92%"></i
+                  ><i class="bar alt" style="height: 69%"></i><label>Jul</label>
+                </div>
+              </div>
+            </article>
+            <aside class="card">
+              <div class="section-head">
+                <h2>Operational highlights</h2>
+                <span>5 open</span>
+              </div>
+              <div class="alerts">
+                <div class="alert">
+                  <b>42 requests overdue</b><span>12 require action today</span>
+                </div>
+                <div class="alert warn">
+                  <b>Candidate supply below target</b
+                  ><span>Warehouse Associate · Central</span>
+                </div>
+                <div class="alert info">
+                  <b>Referral conversion improved</b
+                  ><span>+8.2% month to date</span>
+                </div>
+                <div class="alert">
+                  <b>Refresh exception</b
+                  ><span>3 source records need validation</span>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="view active" id="view-operations">
+          <nav
+            class="ops-local-nav ops-anchor"
+            id="ops-top"
+            aria-label="Recruitment Operations sections"
+          >
+            <strong>On this page</strong
+            ><button type="button" class="active" data-ops-target="ops-top">
+              Overview</button
+            ><button type="button" data-ops-target="ops-pivot">
+              Pivot Analytics</button
+            ><span class="ops-count">2 sections</span>
+          </nav>
+          <div class="ops-filter-toolbar ops-anchor" id="ops-filters">
+            <button
+              class="btn"
+              id="open-filter-drawer"
+              type="button"
+              aria-controls="filter-drawer"
+              aria-expanded="false"
+            >
+              Filter
+            </button>
+            <div
+              class="ops-filter-summary"
+              id="filter-summary"
+              aria-live="polite"
+            >
+              Filter: None
+            </div>
+            <button class="clear-filters" id="clear-filters" type="button">
+              <span aria-hidden="true">×</span> Clear all filters
+            </button>
+          </div>
+          <div class="filter-backdrop" id="filter-backdrop"></div>
+          <aside
+            class="filter-drawer"
+            id="filter-drawer"
+            aria-labelledby="filter-drawer-title"
+            aria-hidden="true"
+          >
+            <div class="filter-drawer-head">
+              <div>
+                <h2 id="filter-drawer-title">Filters</h2>
+                <p>Selections apply immediately to the request list.</p>
+              </div>
+              <button
+                class="filter-close"
+                id="close-filter-drawer"
+                type="button"
+                aria-label="Close filters"
+              >
+                ×
+              </button>
+            </div>
+            <div class="filter-fields">
+              <label class="field ops-search"
+                >Search<input
+                  id="request-search"
+                  placeholder="Search job code, role, project, or owner" /></label
+              ><label class="field"
+                >Status<select id="request-status">
+                  <option>All statuses</option>
+                  <option>On track</option>
+                  <option>Watch</option>
+                  <option>At risk</option>
+                </select></label
+              ><label class="field"
+                >Location<select id="request-location">
+                  <option>All locations</option>
+                  <option>North</option>
+                  <option>Central</option>
+                  <option>South</option>
+                </select></label
+              ><label class="field"
+                >Project<select id="request-project">
+                  <option>All projects</option>
+                  <option>Retail expansion</option>
+                  <option>Warehouse network</option>
+                  <option>Customer service</option>
+                </select></label
+              ><label class="field"
+                >Owner<select id="request-owner">
+                  <option>All owners</option>
+                  <option>Linh Nguyen</option>
+                  <option>Bao Tran</option>
+                  <option>Minh Le</option>
+                  <option>Thu Pham</option>
+                  <option>An Hoang</option>
+                </select></label
+              >
+            </div>
+            <div class="filter-drawer-footer">
+              <button class="btn" id="close-filter-drawer-footer" type="button">
+                Done
+              </button>
+            </div>
+          </aside>
+          <div class="table-wrap ops-anchor" id="ops-requests">
+            <table>
+              <thead>
+                <tr>
+                  <th>Job code / position</th>
+                  <th>Project</th>
+                  <th>Location</th>
+                  <th>Owner</th>
+                  <th>Required</th>
+                  <th>Progress</th>
+                  <th class="center">Deadline</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="request-body"></tbody>
+            </table>
+          </div>
+          <section class="ops-embedded-pivot ops-anchor" id="ops-pivot">
+            <div class="pivot-layout">
+              <aside class="card config">
+                <h2>Configuration</h2>
+                <p style="margin: 0; color: var(--muted); font-size: 11px">
+                  Define rows, columns, value, calculation, and filter. Results
+                  update immediately.
+                </p>
+                <label class="field"
+                  >Rows<select id="pivot-row">
+                    <option value="region">Region</option>
+                    <option value="channel">Recruitment channel</option>
+                    <option value="recruiter">Recruiter</option>
+                    <option value="project">Project</option>
+                  </select></label
+                ><label class="field"
+                  >Columns<select id="pivot-column">
+                    <option>None</option>
+                    <option>Status</option>
+                    <option>Month</option>
+                    <option>Job category</option>
+                  </select></label
+                ><label class="field"
+                  >Values<select id="pivot-value">
+                    <option value="hired">Candidates hired</option>
+                    <option value="conversion">Conversion rate</option>
+                    <option value="cost">Cost per hire</option>
+                    <option value="requests">Hiring requests</option>
+                  </select></label
+                ><label class="field"
+                  >Calculation<select id="pivot-calc">
+                    <option>Sum</option>
+                    <option>Average</option>
+                    <option>Count</option>
+                    <option>% of total</option>
+                  </select></label
+                ><label class="field"
+                  >Period<select>
+                    <option>Month to date</option>
+                    <option>Quarter to date</option>
+                    <option>Year to date</option>
+                  </select></label
+                ><button class="btn" id="export-pivot">
+                  Export current view
+                </button>
+              </aside>
+              <article>
+                <div class="section-head">
+                  <h2 id="pivot-title">Candidates hired by region</h2>
+                  <span>Governed recruitment dataset</span>
+                </div>
+                <div class="table-wrap">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th id="pivot-dimension">Region</th>
+                        <th class="num" id="pivot-measure">Candidates hired</th>
+                        <th class="num">Share</th>
+                        <th class="num">vs previous</th>
+                      </tr>
+                    </thead>
+                    <tbody id="pivot-body"></tbody>
+                  </table>
+                </div>
+              </article>
+            </div>
+          </section>
+        </section>
+
+        <section class="view" id="view-candidates">
+          <details class="filters">
+            <summary>
+              Filters: All positions · All sources · Active candidates
+            </summary>
+            <div class="tools">
+              <label class="field"
+                >Position<select>
+                  <option>All positions</option>
+                  <option>Sales Advisor</option>
+                  <option>Warehouse Associate</option>
+                </select></label
+              ><label class="field"
+                >Source<select>
+                  <option>All sources</option>
+                  <option>Referral</option>
+                  <option>Job board</option>
+                  <option>Campaign</option>
+                </select></label
+              >
+            </div>
+          </details>
+          <div class="funnel">
+            <div class="stage">
+              <strong>8,420</strong><small>Applied</small>
+            </div>
+            <span class="arrow">›</span>
+            <div class="stage">
+              <strong>4,116</strong><small>CV screened</small>
+            </div>
+            <span class="arrow">›</span>
+            <div class="stage">
+              <strong>1,982</strong><small>Interviewed</small>
+            </div>
+            <span class="arrow">›</span>
+            <div class="stage">
+              <strong>1,024</strong><small>Onboarding</small>
+            </div>
+            <span class="arrow">›</span>
+            <div class="stage">
+              <strong>867</strong><small>Probation complete</small>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Candidate</th>
+                  <th>Job code</th>
+                  <th>Source</th>
+                  <th>Location</th>
+                  <th>Stage</th>
+                  <th class="center">Applied</th>
+                  <th>Owner</th>
+                </tr>
+              </thead>
+              <tbody id="candidate-body"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="view" id="view-performance">
+          <div class="grid">
+            <article class="card kpi">
+              <label>Positions filled</label><strong>867</strong
+              ><small>69.5% completion</small>
+            </article>
+            <article class="card kpi">
+              <label>Overdue requests</label><strong>42</strong
+              ><small class="down">+7 since last week</small>
+            </article>
+            <article class="card kpi">
+              <label>Pending 1–7 days</label><strong>186</strong
+              ><small>Within normal range</small>
+            </article>
+            <article class="card kpi">
+              <label>Pending over 1 month</label><strong>29</strong
+              ><small class="down">Requires escalation</small>
+            </article>
+          </div>
+          <div class="table-wrap" style="margin-top: 16px">
+            <table>
+              <thead>
+                <tr>
+                  <th>Recruiter</th>
+                  <th>Team</th>
+                  <th class="num">Assigned</th>
+                  <th class="num">Hired</th>
+                  <th class="num">Conversion</th>
+                  <th class="num">Avg fill</th>
+                  <th class="num">Cost / hire</th>
+                  <th>Performance</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Linh Nguyen</td>
+                  <td>Team North</td>
+                  <td class="num">142</td>
+                  <td class="num">116</td>
+                  <td class="num">13.4%</td>
+                  <td class="num">16.2d</td>
+                  <td class="num">$128</td>
+                  <td>
+                    <span class="status" data-s="On track">Above target</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Bao Tran</td>
+                  <td>Team Central</td>
+                  <td class="num">136</td>
+                  <td class="num">104</td>
+                  <td class="num">11.9%</td>
+                  <td class="num">19.8d</td>
+                  <td class="num">$137</td>
+                  <td><span class="status" data-s="Watch">Watch</span></td>
+                </tr>
+                <tr>
+                  <td>Minh Le</td>
+                  <td>Team South</td>
+                  <td class="num">121</td>
+                  <td class="num">98</td>
+                  <td class="num">12.6%</td>
+                  <td class="num">17.1d</td>
+                  <td class="num">$131</td>
+                  <td>
+                    <span class="status" data-s="On track">On target</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="view" id="view-sources">
+          <div class="source-grid">
+            <article class="source">
+              <strong>318 hires</strong
+              ><span>Employee referral · 18.6% conversion</span>
+            </article>
+            <article class="source">
+              <strong>341 hires</strong><span>Job board · 9.2% conversion</span>
+            </article>
+            <article class="source">
+              <strong>208 hires</strong
+              ><span>Social campaign · 7.8% conversion</span>
+            </article>
+            <article class="source">
+              <strong>$84</strong><span>Lowest cost per hire · Referral</span>
+            </article>
+          </div>
+          <div class="table-wrap" style="margin-top: 16px">
+            <table>
+              <thead>
+                <tr>
+                  <th>Channel</th>
+                  <th class="num">Candidates</th>
+                  <th class="num">Screened</th>
+                  <th class="num">Hired</th>
+                  <th class="num">Conversion</th>
+                  <th class="num">Cost / candidate</th>
+                  <th>Trend</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Employee referral</td>
+                  <td class="num">1,710</td>
+                  <td class="num">982</td>
+                  <td class="num">318</td>
+                  <td class="num">18.6%</td>
+                  <td class="num">$84</td>
+                  <td>Improving</td>
+                </tr>
+                <tr>
+                  <td>Job board</td>
+                  <td class="num">3,706</td>
+                  <td class="num">1,641</td>
+                  <td class="num">341</td>
+                  <td class="num">9.2%</td>
+                  <td class="num">$142</td>
+                  <td>Stable</td>
+                </tr>
+                <tr>
+                  <td>Social campaign</td>
+                  <td class="num">2,667</td>
+                  <td class="num">1,182</td>
+                  <td class="num">208</td>
+                  <td class="num">7.8%</td>
+                  <td class="num">$168</td>
+                  <td>Declining</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="view" id="view-forecast">
+          <div class="grid">
+            <article class="card kpi">
+              <label>Forecast demand — next month</label><strong>1,420</strong
+              ><small>+13.8% projected</small>
+            </article>
+            <article class="card kpi">
+              <label>New hiring</label><strong>68%</strong
+              ><small>Retail expansion drives demand</small>
+            </article>
+            <article class="card kpi">
+              <label>Replacement hiring</label><strong>32%</strong
+              ><small>Stable vs prior quarter</small>
+            </article>
+            <article class="card kpi">
+              <label>Projected gap</label><strong>184</strong
+              ><small class="down">Capacity action required</small>
+            </article>
+          </div>
+          <article class="card" style="margin-top: 16px">
+            <div class="section-head">
+              <h2>Demand forecast</h2>
+              <span>New / Replacement</span>
+            </div>
+            <div class="forecast">
+              <div class="col">
+                <i style="height: 48%"></i><i style="height: 28%"></i
+                ><label>Aug</label>
+              </div>
+              <div class="col">
+                <i style="height: 57%"></i><i style="height: 30%"></i
+                ><label>Sep</label>
+              </div>
+              <div class="col">
+                <i style="height: 63%"></i><i style="height: 33%"></i
+                ><label>Oct</label>
+              </div>
+              <div class="col">
+                <i style="height: 71%"></i><i style="height: 36%"></i
+                ><label>Nov</label>
+              </div>
+              <div class="col">
+                <i style="height: 78%"></i><i style="height: 38%"></i
+                ><label>Dec</label>
+              </div>
+              <div class="col">
+                <i style="height: 82%"></i><i style="height: 41%"></i
+                ><label>Jan</label>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section class="view" id="view-reports">
+          <div class="grid">
+            <article class="card kpi">
+              <label>Data refresh</label
+              ><strong id="refresh-status">Successful</strong
+              ><small>Today 08:30 · 3 sources</small>
+            </article>
+            <article class="card kpi">
+              <label>Scheduled reports</label><strong>6</strong
+              ><small>Next delivery 17:00</small>
+            </article>
+            <article class="card kpi">
+              <label>Delivery success</label><strong>98.7%</strong
+              ><small>30-day average</small>
+            </article>
+            <article class="card kpi">
+              <label>Validation exceptions</label><strong>3</strong
+              ><small class="down">Administrator review needed</small>
+            </article>
+          </div>
+          <div class="table-wrap" style="margin-top: 16px">
+            <table>
+              <thead>
+                <tr>
+                  <th>Report</th>
+                  <th>Schedule</th>
+                  <th>Recipients</th>
+                  <th>Last generated</th>
+                  <th>Status</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Daily recruitment operations</td>
+                  <td>Daily · 17:00</td>
+                  <td>Managers, Supervisors</td>
+                  <td>Yesterday 17:02</td>
+                  <td>
+                    <span class="status" data-s="On track">Delivered</span>
+                  </td>
+                  <td><button class="btn run-report">Run now</button></td>
+                </tr>
+                <tr>
+                  <td>KPI performance summary</td>
+                  <td>Monday · 08:00</td>
+                  <td>Management</td>
+                  <td>28 Jul 08:01</td>
+                  <td>
+                    <span class="status" data-s="On track">Delivered</span>
+                  </td>
+                  <td><button class="btn run-report">Run now</button></td>
+                </tr>
+                <tr>
+                  <td>Recruitment risk digest</td>
+                  <td>Daily · 09:00</td>
+                  <td>Team Leaders</td>
+                  <td>Today 09:01</td>
+                  <td><span class="status" data-s="Watch">3 warnings</span></td>
+                  <td><button class="btn run-report">Run now</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="view" id="view-request">
+          <article class="card request-page-card">
+            <div class="section-head">
+              <div>
+                <h2>Create recruitment request</h2>
+                <span
+                  >Set the hiring requirement, ownership, and delivery
+                  deadline.</span
+                >
+              </div>
+            </div>
+            <form id="request-page-form">
+              <div class="form-grid">
+                <label class="field"
+                  >Position<input name="role" required /></label
+                ><label class="field"
+                  >Project<select name="project">
+                    <option>Retail expansion</option>
+                    <option>Warehouse network</option>
+                    <option>Customer service</option>
+                  </select></label
+                ><label class="field"
+                  >Location<select name="location">
+                    <option>North</option>
+                    <option>Central</option>
+                    <option>South</option>
+                  </select></label
+                ><label class="field"
+                  >Required quantity<input
+                    name="quantity"
+                    type="number"
+                    min="1"
+                    value="10"
+                    required /></label
+                ><label class="field"
+                  >Owner<input name="owner" required /></label
+                ><label class="field"
+                  >Deadline<input name="deadline" type="date" required
+                /></label>
+              </div>
+              <div class="request-page-actions">
+                <button class="btn" type="reset">Reset</button
+                ><button class="btn primary" type="submit">
+                  Create request
+                </button>
+              </div>
+            </form>
+          </article>
+        </section>
+
+        <section class="view" id="view-admin">
+          <div class="split">
+            <article class="card">
+              <div class="section-head">
+                <h2>Role and data access</h2>
+                <span>Administrator controlled</span>
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Role</th>
+                      <th>Scope</th>
+                      <th>Dashboards</th>
+                      <th>Interactive analytics</th>
+                      <th>Administration</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Recruitment Manager</td>
+                      <td>Organization</td>
+                      <td>All</td>
+                      <td>Allowed</td>
+                      <td>No</td>
+                    </tr>
+                    <tr>
+                      <td>Supervisor</td>
+                      <td>Assigned teams</td>
+                      <td>Operational</td>
+                      <td>Allowed</td>
+                      <td>No</td>
+                    </tr>
+                    <tr>
+                      <td>Team Leader</td>
+                      <td>Own team</td>
+                      <td>Team + personal</td>
+                      <td>Allowed</td>
+                      <td>No</td>
+                    </tr>
+                    <tr>
+                      <td>Recruiter</td>
+                      <td>Assigned vacancies</td>
+                      <td>Personal</td>
+                      <td>Allowed by admin</td>
+                      <td>No</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+            <aside class="card">
+              <div class="section-head">
+                <h2>Access status</h2>
+                <span>Current session</span>
+              </div>
+              <div class="alerts">
+                <div class="alert info">
+                  <b id="role-summary">Recruitment Manager</b
+                  ><span>Organization-wide data scope</span>
+                </div>
+                <div class="alert warn">
+                  <b>2 access requests pending</b
+                  ><span>Administrator approval required</span>
+                </div>
+              </div>
+            </aside>
+          </div>
+          <article class="card" style="margin-top: 16px">
+            <div class="section-head">
+              <h2>Audit history</h2>
+              <span>Configuration and system events</span>
+            </div>
+            <div class="audit" id="audit"></div>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <dialog id="request-dialog">
+      <form id="request-form">
+        <h2>Create recruitment request</h2>
+        <p>Required fields are validated before the request is added.</p>
+        <div class="form-grid">
+          <label class="field">Position<input name="role" required /></label
+          ><label class="field"
+            >Project<select name="project">
+              <option>Retail expansion</option>
+              <option>Warehouse network</option>
+              <option>Customer service</option>
+            </select></label
+          ><label class="field"
+            >Location<select name="location">
+              <option>North</option>
+              <option>Central</option>
+              <option>South</option>
+            </select></label
+          ><label class="field"
+            >Required quantity<input
+              name="quantity"
+              type="number"
+              min="1"
+              value="10"
+              required /></label
+          ><label class="field">Owner<input name="owner" required /></label
+          ><label class="field"
+            >Deadline<input name="deadline" type="date" required
+          /></label>
+        </div>
+        <div class="dialog-actions">
+          <button class="btn" type="button" id="cancel-request">Cancel</button
+          ><button class="btn primary" type="submit">Create request</button>
+        </div>
+      </form>
+    </dialog>
+    <script src="script.js?v=3.0-optimized-2"></script>
+  </body>
+</html>
